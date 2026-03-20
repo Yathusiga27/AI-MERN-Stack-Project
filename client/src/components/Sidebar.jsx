@@ -4,12 +4,21 @@ import { assets } from "../assets/assets";
 import moment from "moment/moment.js";
 
 const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
-  const { chats, selectedChat, theme, setTheme, user, navigate } =
-    useAppContext();
+  const {
+    chats,
+    selectedChat,
+    setSelectedChat,
+    theme,
+    setTheme,
+    user,
+    navigate,
+  } = useAppContext();
   const [search, setSearch] = useState("");
 
   return (
-    <div className={`flex flex-col h-screen min-w-72 p-5 dark:bg-linear-to-b from-[#242124]/30 to-[#000000]/30 border-r border-[#80609F]/30 backdrop-blur-3xl transition-all duration-500 max-md:absolute left-0 z-1 ${!isMenuOpen && "max-md:-translate-x-full"}`}>
+    <div
+      className={`flex flex-col h-screen min-w-72 p-5 dark:bg-linear-to-b from-[#242124]/30 to-[#000000]/30 border-r border-[#80609F]/30 backdrop-blur-3xl transition-all duration-500 max-md:absolute left-0 z-1 ${!isMenuOpen && "max-md:-translate-x-full"}`}
+    >
       <img
         src={theme === "dark" ? assets.logo_full : assets.logo_full_dark}
         alt=""
@@ -50,6 +59,11 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
           )
           .map((chat) => (
             <div
+              onClick={() => {
+                navigate("/");
+                setSelectedChat(chat);
+                setIsMenuOpen(false);
+              }}
               key={chat._id}
               className="p-2 px-4 dark:bg-[#57317C]/10 border border-gray-300 dark:border-[#80609F]/15 rounded-md cursor-pointer flex justify-between group"
             >
@@ -76,6 +90,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
       <div
         onClick={() => {
           navigate("/community");
+          setIsMenuOpen(false);
         }}
         className="flex items-center gap-2 p-3 mt-auto border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all"
       >
@@ -93,6 +108,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
       <div
         onClick={() => {
           navigate("/credit");
+          setIsMenuOpen(false);
         }}
         className="flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all"
       >
