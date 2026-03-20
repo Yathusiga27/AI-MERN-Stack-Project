@@ -92,7 +92,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
           navigate("/community");
           setIsMenuOpen(false);
         }}
-        className="flex items-center gap-2 p-3 mt-auto border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all"
+        className="flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all"
       >
         <img
           src={assets.gallery_icon}
@@ -107,7 +107,7 @@ const Sidebar = ({ isMenuOpen, setIsMenuOpen }) => {
       {/* credit purchases option */}
       <div
         onClick={() => {
-          navigate("/credit");
+          navigate("/credits");
           setIsMenuOpen(false);
         }}
         className="flex items-center gap-2 p-3 mt-4 border border-gray-300 dark:border-white/15 rounded-md cursor-pointer hover:scale-103 transition-all"
